@@ -66,7 +66,7 @@ class ModelVersionOut(BaseModel):
 
 
 class ExperimentOut(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(from_attributes=True, protected_namespaces=())
 
     id: str
     dataset_id: str

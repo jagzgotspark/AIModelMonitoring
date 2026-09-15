@@ -108,11 +108,13 @@ def train_model(
     feature_names = _output_feature_names(pipeline.named_steps["preprocess"], feature_columns)
     feature_importance = _extract_feature_importance(pipeline.named_steps["model"], feature_names)
 
+    hyperparameters = best_params or {k: v for k, v in model.get_params().items() if not callable(v)}
+
     return {
         "pipeline": pipeline,
-        "metrics": metrics,
-        "hyperparameters": best_params or {k: v for k, v in model.get_params().items() if not callable(v)},
-        "feature_importance": feature_importance,
+        "metrics": json_safe(metrics),
+        "hyperparameters": json_safe(hyperparameters),
+        "feature_importance": json_safe(feature_importance),
     }
 
 
@@ -131,6 +133,18 @@ def _extract_feature_importance(model, feature_names: list[str]) -> dict:
         name: float(score)
         for name, score in zip(feature_names, importances)
     }
+
+
+def json_safe(value):
+    if isinstance(value, float) and (np.isnan(value) or np.isinf(value)):
+        return None
+    if isinstance(value, dict):
+        return {k: json_safe(v) for k, v in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [json_safe(v) for v in value]
+    if isinstance(value, np.generic):
+        return json_safe(value.item())
+    return value
 
 
 def save_pipeline(pipeline, path: str) -> None:

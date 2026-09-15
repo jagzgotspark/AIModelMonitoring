@@ -1,4 +1,5 @@
 import os
+from datetime import datetime, timezone
 
 import pandas as pd
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
@@ -90,11 +91,10 @@ def _run_training_job(
             db.add(model_version)
 
         experiment.status = ExperimentStatus.completed
-        from datetime import datetime, timezone
-
         experiment.completed_at = datetime.now(timezone.utc)
         db.commit()
     except Exception as exc:  # noqa: BLE001
+        db.rollback()
         experiment.status = ExperimentStatus.failed
         experiment.error_message = str(exc)
         db.commit()
