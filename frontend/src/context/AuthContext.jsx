@@ -1,10 +1,25 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import client from "../api/client.js";
 
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [token, setToken] = useState(localStorage.getItem("access_token"));
+  const [email, setEmail] = useState(null);
+
+  useEffect(() => {
+    if (!token) {
+      setEmail(null);
+      return;
+    }
+    client
+      .get("/auth/me")
+      .then(({ data }) => setEmail(data.email))
+      .catch(() => {
+        localStorage.removeItem("access_token");
+        setToken(null);
+      });
+  }, [token]);
 
   async function login(email, password) {
     const form = new URLSearchParams();
@@ -32,7 +47,7 @@ export function AuthProvider({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={{ token, login, register, logout, isAuthenticated: !!token }}>
+    <AuthContext.Provider value={{ token, email, login, register, logout, isAuthenticated: !!token }}>
       {children}
     </AuthContext.Provider>
   );

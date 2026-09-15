@@ -60,6 +60,39 @@ def get_dataset(dataset_id: str, db: Session = Depends(get_db), current_user: Us
     return dataset
 
 
+@router.get("/{dataset_id}/preview")
+def preview_dataset(
+    dataset_id: str,
+    limit: int = 10,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    dataset = _get_owned_dataset(dataset_id, db, current_user)
+    df = pd.read_csv(dataset.file_path, nrows=max(1, min(limit, 100)))
+    return {
+        "columns": list(df.columns),
+        "rows": df.where(pd.notna(df), None).to_dict(orient="records"),
+    }
+
+
+@router.delete("/{dataset_id}", status_code=204)
+def delete_dataset(
+    dataset_id: str,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    dataset = _get_owned_dataset(dataset_id, db, current_user)
+    if dataset.experiments:
+        raise HTTPException(
+            status_code=400,
+            detail="Cannot delete a dataset with existing experiments",
+        )
+    if os.path.exists(dataset.file_path):
+        os.remove(dataset.file_path)
+    db.delete(dataset)
+    db.commit()
+
+
 @router.put("/{dataset_id}/target", response_model=DatasetOut)
 def set_target_column(
     dataset_id: str,

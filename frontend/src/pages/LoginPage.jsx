@@ -14,7 +14,7 @@ export default function LoginPage() {
     setError("");
     try {
       await login(email, password);
-      navigate("/datasets");
+      navigate("/");
     } catch (err) {
       setError(err.response?.data?.detail || "Login failed");
     }

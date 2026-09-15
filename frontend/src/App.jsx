@@ -3,6 +3,7 @@ import Layout from "./components/Layout.jsx";
 import { useAuth } from "./context/AuthContext.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
+import OverviewPage from "./pages/OverviewPage.jsx";
 import DatasetsPage from "./pages/DatasetsPage.jsx";
 import ExperimentsPage from "./pages/ExperimentsPage.jsx";
 import ExperimentDetailPage from "./pages/ExperimentDetailPage.jsx";
@@ -26,7 +27,7 @@ export default function App() {
           </PrivateRoute>
         }
       >
-        <Route index element={<Navigate to="/datasets" replace />} />
+        <Route index element={<OverviewPage />} />
         <Route path="datasets" element={<DatasetsPage />} />
         <Route path="experiments" element={<ExperimentsPage />} />
         <Route path="experiments/:experimentId" element={<ExperimentDetailPage />} />

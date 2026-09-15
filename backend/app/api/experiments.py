@@ -117,6 +117,17 @@ def get_experiment(experiment_id: str, db: Session = Depends(get_db), current_us
     return _get_owned_experiment(experiment_id, db, current_user)
 
 
+@router.delete("/{experiment_id}", status_code=204)
+def delete_experiment(
+    experiment_id: str,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    experiment = _get_owned_experiment(experiment_id, db, current_user)
+    db.delete(experiment)
+    db.commit()
+
+
 @router.post("/{experiment_id}/model-versions/{model_version_id}/deploy", response_model=ExperimentOut)
 def deploy_model_version(
     experiment_id: str,

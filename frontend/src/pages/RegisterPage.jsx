@@ -15,7 +15,7 @@ export default function RegisterPage() {
     setError("");
     try {
       await register(email, password, fullName);
-      navigate("/datasets");
+      navigate("/");
     } catch (err) {
       setError(err.response?.data?.detail || "Registration failed");
     }

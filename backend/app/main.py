@@ -3,7 +3,7 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import auth, datasets, drift, experiments
+from app.api import auth, dashboard, datasets, drift, experiments
 from app.core.config import settings
 from app.db.session import Base, engine
 from app.models import models  # noqa: F401
@@ -25,6 +25,7 @@ app.include_router(auth.router)
 app.include_router(datasets.router)
 app.include_router(experiments.router)
 app.include_router(drift.router)
+app.include_router(dashboard.router)
 
 
 @app.get("/api/health")
