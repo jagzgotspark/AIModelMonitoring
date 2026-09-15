@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   CartesianGrid,
   Line,
@@ -35,6 +36,7 @@ function parseCsv(text) {
 
 export default function DriftDashboardPage() {
   const [experiments, setExperiments] = useState([]);
+  const [loadingExperiments, setLoadingExperiments] = useState(true);
   const [selectedModelId, setSelectedModelId] = useState("");
   const [reports, setReports] = useState([]);
   const [loadingReports, setLoadingReports] = useState(false);
@@ -43,7 +45,10 @@ export default function DriftDashboardPage() {
   const { showToast } = useToast();
 
   useEffect(() => {
-    client.get("/experiments").then(({ data }) => setExperiments(data));
+    client
+      .get("/experiments")
+      .then(({ data }) => setExperiments(data))
+      .finally(() => setLoadingExperiments(false));
   }, []);
 
   const modelOptions = experiments.flatMap((exp) =>
@@ -102,26 +107,39 @@ export default function DriftDashboardPage() {
 
       <div className="card" style={{ marginBottom: 20 }}>
         <h3 className="card-title">Select a model version</h3>
-        <select value={selectedModelId} onChange={(e) => setSelectedModelId(e.target.value)}>
-          <option value="">Select a model version</option>
-          {modelOptions.map((opt) => (
-            <option key={opt.id} value={opt.id}>
-              {opt.label}
-            </option>
-          ))}
-        </select>
+        {loadingExperiments ? (
+          <Skeleton width={260} height={36} />
+        ) : modelOptions.length === 0 ? (
+          <EmptyState
+            icon="⚙"
+            title="No trained models yet"
+            description="Drift monitoring needs at least one completed experiment with a trained model version. Run an experiment first, then come back here."
+            action={<Link to="/experiments"><button>Go to experiments</button></Link>}
+          />
+        ) : (
+          <>
+            <select value={selectedModelId} onChange={(e) => setSelectedModelId(e.target.value)}>
+              <option value="">Select a model version</option>
+              {modelOptions.map((opt) => (
+                <option key={opt.id} value={opt.id}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
 
-        {selectedModelId && (
-          <form onSubmit={handleCheckDrift} className="upload-form" style={{ marginTop: 14 }}>
-            <input type="file" accept=".csv" onChange={(e) => setFile(e.target.files[0])} />
-            <button type="submit" disabled={!file || checking}>
-              {checking ? "Checking..." : "Check new data for drift"}
-            </button>
-          </form>
+            {selectedModelId && (
+              <form onSubmit={handleCheckDrift} className="upload-form" style={{ marginTop: 14 }}>
+                <input type="file" accept=".csv" onChange={(e) => setFile(e.target.files[0])} />
+                <button type="submit" disabled={!file || checking}>
+                  {checking ? "Checking..." : "Check new data for drift"}
+                </button>
+              </form>
+            )}
+          </>
         )}
       </div>
 
-      {!selectedModelId ? (
+      {modelOptions.length === 0 ? null : !selectedModelId ? (
         <EmptyState icon="△" title="Pick a model to monitor" description="Choose a trained model version above to view or run drift checks." />
       ) : loadingReports ? (
         <Skeleton height={200} />
