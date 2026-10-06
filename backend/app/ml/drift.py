@@ -34,9 +34,11 @@ def detect_drift(reference_df: pd.DataFrame, incoming_df: pd.DataFrame, feature_
     for col in feature_columns:
         if col not in incoming_df.columns:
             continue
-        if pd.api.types.is_numeric_dtype(reference_df[col]):
-            ref_vals = reference_df[col].dropna().to_numpy()
-            new_vals = incoming_df[col].dropna().to_numpy()
+        ref_col = reference_df[col]
+        if pd.api.types.is_numeric_dtype(ref_col) and not pd.api.types.is_bool_dtype(ref_col):
+            # Incoming JSON records can carry blanks or stray strings; coerce them to NaN.
+            ref_vals = ref_col.dropna().to_numpy(dtype=float)
+            new_vals = pd.to_numeric(incoming_df[col], errors="coerce").dropna().to_numpy(dtype=float)
             if len(ref_vals) < 2 or len(new_vals) < 2:
                 continue
             psi = _population_stability_index(ref_vals, new_vals)
@@ -50,8 +52,11 @@ def detect_drift(reference_df: pd.DataFrame, incoming_df: pd.DataFrame, feature_
             }
             drift_scores.append(psi)
         else:
-            ref_dist = reference_df[col].value_counts(normalize=True)
-            new_dist = incoming_df[col].value_counts(normalize=True)
+            # Compare as strings so e.g. bool True in the reference matches "True" from a CSV upload.
+            ref_dist = ref_col.dropna().astype(str).value_counts(normalize=True)
+            new_dist = incoming_df[col].dropna().astype(str).value_counts(normalize=True)
+            if ref_dist.empty or new_dist.empty:
+                continue
             categories = set(ref_dist.index) | set(new_dist.index)
             expected_pct = np.array([ref_dist.get(c, 1e-4) for c in categories])
             actual_pct = np.array([new_dist.get(c, 1e-4) for c in categories])

@@ -28,7 +28,8 @@ function parseCsv(text) {
       headers.forEach((h, i) => {
         const raw = values[i]?.trim();
         const num = Number(raw);
-        record[h] = raw !== "" && !Number.isNaN(num) ? num : raw;
+        if (raw === undefined || raw === "") record[h] = null;
+        else record[h] = Number.isNaN(num) ? raw : num;
       });
       return record;
     });
