@@ -6,7 +6,7 @@ import Skeleton from "../components/Skeleton.jsx";
 import StatusPill from "../components/StatusPill.jsx";
 import { useToast } from "../context/ToastContext.jsx";
 
-const CHART_COLORS = ["#4f46e5", "#a855f7", "#16a34a", "#f97316"];
+const CHART_COLORS = ["#b1440e", "#3c6e42", "#92650a", "#5b6b6f"];
 
 export default function ExperimentDetailPage() {
   const { experimentId } = useParams();
@@ -179,7 +179,7 @@ function ExplanationPanel({ explanation }) {
           <XAxis type="number" />
           <YAxis type="category" dataKey="name" width={160} />
           <Tooltip />
-          <Bar dataKey="importance" fill="#4f46e5" radius={[0, 4, 4, 0]} />
+          <Bar dataKey="importance" fill="#b1440e" radius={[0, 3, 3, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

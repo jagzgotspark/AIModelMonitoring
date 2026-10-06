@@ -156,8 +156,8 @@ export default function DriftDashboardPage() {
                 <XAxis dataKey="index" label={{ value: "Check #", position: "insideBottom", offset: -4 }} />
                 <YAxis />
                 <Tooltip labelFormatter={(i) => chartData[i - 1]?.date} />
-                <ReferenceLine y={DRIFT_THRESHOLD} stroke="#dc2626" strokeDasharray="4 4" label="threshold" />
-                <Line type="monotone" dataKey="score" stroke="#4f46e5" strokeWidth={2} dot={{ r: 3 }} />
+                <ReferenceLine y={DRIFT_THRESHOLD} stroke="#a3291f" strokeDasharray="4 4" label="threshold" />
+                <Line type="monotone" dataKey="score" stroke="#b1440e" strokeWidth={2} dot={{ r: 3 }} />
               </LineChart>
             </ResponsiveContainer>
           </div>

@@ -42,9 +42,12 @@ export default function OverviewPage() {
   return (
     <div>
       <div className="stat-grid">
-        {stats.map((s) => (
+        {stats.map((s, i) => (
           <Link key={s.label} to={s.to} className="stat-card" style={{ textDecoration: "none", color: "inherit", display: "block" }}>
-            <div className="stat-label">{s.label}</div>
+            <div className="stat-label">
+              <span>{s.label}</span>
+              <span className="stat-index">{String(i + 1).padStart(2, "0")}</span>
+            </div>
             <div className="stat-value">{s.value}</div>
             <div className="stat-hint">{s.hint}</div>
           </Link>
@@ -92,14 +95,19 @@ export default function OverviewPage() {
           {summary.recent_drift_alerts.length === 0 ? (
             <EmptyState icon="✓" title="No drift detected" description="Everything monitored is within expected distribution." />
           ) : (
-            summary.recent_drift_alerts.map((a) => (
-              <div key={a.id} style={{ padding: "10px 0", borderBottom: "1px solid var(--border)" }}>
-                <div style={{ fontWeight: 600, fontSize: 13 }}>{a.experiment_name} — {a.algorithm}</div>
-                <div className="muted">
-                  drift score {a.overall_drift_score.toFixed(3)} · {new Date(a.created_at).toLocaleString()}
+            <div className="alert-feed">
+              {summary.recent_drift_alerts.map((a) => (
+                <div key={a.id} className="alert-row">
+                  <span className={`alert-severity ${a.overall_drift_score >= 0.3 ? "high" : ""}`} />
+                  <div className="alert-body">
+                    <div className="alert-title">{a.experiment_name} — {a.algorithm}</div>
+                    <div className="alert-meta">
+                      score {a.overall_drift_score.toFixed(3)} · {new Date(a.created_at).toLocaleString()}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))
+              ))}
+            </div>
           )}
         </div>
       </div>

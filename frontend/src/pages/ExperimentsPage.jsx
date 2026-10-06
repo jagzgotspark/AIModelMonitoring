@@ -6,10 +6,7 @@ import Skeleton from "../components/Skeleton.jsx";
 import StatusPill from "../components/StatusPill.jsx";
 import { useToast } from "../context/ToastContext.jsx";
 
-const ALGORITHMS = [
-  { id: "random_forest", label: "Random Forest" },
-  { id: "xgboost", label: "XGBoost" },
-];
+const ALGORITHMS = ["random_forest", "xgboost"];
 
 export default function ExperimentsPage() {
   const [experiments, setExperiments] = useState([]);
@@ -17,7 +14,6 @@ export default function ExperimentsPage() {
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState("");
   const [datasetId, setDatasetId] = useState("");
-  const [algorithms, setAlgorithms] = useState(ALGORITHMS.map((a) => a.id));
   const [tune, setTune] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const { showToast } = useToast();
@@ -35,22 +31,14 @@ export default function ExperimentsPage() {
     return () => clearInterval(interval);
   }, []);
 
-  function toggleAlgorithm(algo) {
-    setAlgorithms((prev) => (prev.includes(algo) ? prev.filter((a) => a !== algo) : [...prev, algo]));
-  }
-
   async function handleCreate(e) {
     e.preventDefault();
-    if (!algorithms.length) {
-      showToast("Select at least one algorithm", "error");
-      return;
-    }
     setSubmitting(true);
     try {
       await client.post("/experiments", {
         dataset_id: datasetId,
         name,
-        algorithms,
+        algorithms: ALGORITHMS,
         tune_hyperparameters: tune,
       });
       showToast("Training started", "success");
@@ -103,18 +91,6 @@ export default function ExperimentsPage() {
                 </option>
               ))}
             </select>
-            <div className="algo-checkboxes">
-              {ALGORITHMS.map((algo) => (
-                <label key={algo.id}>
-                  <input
-                    type="checkbox"
-                    checked={algorithms.includes(algo.id)}
-                    onChange={() => toggleAlgorithm(algo.id)}
-                  />
-                  {algo.label}
-                </label>
-              ))}
-            </div>
             <label className="checkbox-row">
               <input type="checkbox" checked={tune} onChange={(e) => setTune(e.target.checked)} />
               Tune hyperparameters
