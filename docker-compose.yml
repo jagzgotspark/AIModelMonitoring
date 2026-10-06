@@ -7,7 +7,9 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: ai_monitoring
     ports:
-      - "5432:5432"
+      # Host port only; containers always reach Postgres at db:5432. Override with
+      # POSTGRES_PORT in a root .env if a local Postgres already uses 5432.
+      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
     healthcheck:
@@ -24,6 +26,8 @@ services:
       ENVIRONMENT: ${ENVIRONMENT:-development}
       SECRET_KEY: ${SECRET_KEY:-change-me-in-production}
       STORAGE_DIR: /app/storage
+      # File-change events don't cross Windows bind mounts; poll so --reload still works.
+      WATCHFILES_FORCE_POLLING: "true"
     ports:
       - "8000:8000"
     volumes:
@@ -38,6 +42,8 @@ services:
     restart: unless-stopped
     environment:
       VITE_API_PROXY_TARGET: http://backend:8000
+      # Same as above, for Vite's hot reload.
+      CHOKIDAR_USEPOLLING: "true"
     ports:
       - "5173:5173"
     volumes:
