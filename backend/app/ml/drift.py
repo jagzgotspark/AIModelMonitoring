@@ -4,6 +4,9 @@ from scipy.stats import ks_2samp
 
 PSI_DRIFT_THRESHOLD = 0.2
 KS_PVALUE_THRESHOLD = 0.05
+# With large samples the KS p-value is significant for negligible shifts, so also
+# require a minimum effect size (the KS statistic) before flagging drift.
+KS_STATISTIC_THRESHOLD = 0.1
 
 
 def _population_stability_index(expected: np.ndarray, actual: np.ndarray, buckets: int = 10) -> float:
@@ -43,7 +46,8 @@ def detect_drift(reference_df: pd.DataFrame, incoming_df: pd.DataFrame, feature_
                 continue
             psi = _population_stability_index(ref_vals, new_vals)
             ks_stat, p_value = ks_2samp(ref_vals, new_vals)
-            is_drifted = bool(psi > PSI_DRIFT_THRESHOLD or p_value < KS_PVALUE_THRESHOLD)
+            ks_drifted = p_value < KS_PVALUE_THRESHOLD and ks_stat > KS_STATISTIC_THRESHOLD
+            is_drifted = bool(psi > PSI_DRIFT_THRESHOLD or ks_drifted)
             feature_drift[col] = {
                 "psi": psi,
                 "ks_statistic": float(ks_stat),
@@ -66,7 +70,10 @@ def detect_drift(reference_df: pd.DataFrame, incoming_df: pd.DataFrame, feature_
             drift_scores.append(abs(psi))
 
     overall_drift_score = float(np.mean(drift_scores)) if drift_scores else 0.0
-    is_drifted = overall_drift_score > PSI_DRIFT_THRESHOLD
+    # The mean PSI dilutes a single badly drifted feature when there are many features,
+    # so the batch is also flagged when any individual feature has drifted.
+    any_feature_drifted = any(f["is_drifted"] for f in feature_drift.values())
+    is_drifted = bool(overall_drift_score > PSI_DRIFT_THRESHOLD or any_feature_drifted)
 
     return {
         "overall_drift_score": overall_drift_score,

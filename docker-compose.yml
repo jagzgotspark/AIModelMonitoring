@@ -21,7 +21,8 @@ services:
     restart: unless-stopped
     environment:
       DATABASE_URL: postgresql://postgres:postgres@db:5432/ai_monitoring
-      SECRET_KEY: change-me-in-production
+      ENVIRONMENT: ${ENVIRONMENT:-development}
+      SECRET_KEY: ${SECRET_KEY:-change-me-in-production}
       STORAGE_DIR: /app/storage
     ports:
       - "8000:8000"

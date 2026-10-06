@@ -8,7 +8,11 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 def infer_task_type(series: pd.Series) -> str:
     if series.dtype == object or series.dtype.name == "category":
         return "classification"
-    if series.nunique() <= 20:
+    values = series.dropna()
+    # Fractional values (e.g. prices) are continuous, however few distinct values a small file has.
+    if pd.api.types.is_float_dtype(values) and not (values == values.round()).all():
+        return "regression"
+    if values.nunique() <= 20:
         return "classification"
     return "regression"
 

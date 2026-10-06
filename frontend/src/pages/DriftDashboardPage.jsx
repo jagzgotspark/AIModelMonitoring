@@ -94,6 +94,7 @@ export default function DriftDashboardPage() {
     .map((r, i) => ({
       index: i + 1,
       score: r.overall_drift_score,
+      isDrifted: r.is_drifted,
       date: new Date(r.created_at).toLocaleString(),
     }));
 
@@ -157,7 +158,22 @@ export default function DriftDashboardPage() {
                 <YAxis />
                 <Tooltip labelFormatter={(i) => chartData[i - 1]?.date} />
                 <ReferenceLine y={DRIFT_THRESHOLD} stroke="#a3291f" strokeDasharray="4 4" label="threshold" />
-                <Line type="monotone" dataKey="score" stroke="#b1440e" strokeWidth={2} dot={{ r: 3 }} />
+                {/* A check can be flagged below the threshold when a single feature drifted, so mark flagged checks explicitly. */}
+                <Line
+                  type="monotone"
+                  dataKey="score"
+                  stroke="#b1440e"
+                  strokeWidth={2}
+                  dot={({ cx, cy, payload, index }) => (
+                    <circle
+                      key={index}
+                      cx={cx}
+                      cy={cy}
+                      r={payload.isDrifted ? 5 : 3}
+                      fill={payload.isDrifted ? "#a3291f" : "#b1440e"}
+                    />
+                  )}
+                />
               </LineChart>
             </ResponsiveContainer>
           </div>

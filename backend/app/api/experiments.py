@@ -175,6 +175,7 @@ def explain(
         feature_names=explanation["feature_names"],
         feature_importance=list(explanation["global_importance"].values()),
         sample_explanation=explanation["sample_explanation"],
+        explained_class=explanation["explained_class"],
     )
 
 

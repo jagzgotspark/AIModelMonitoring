@@ -1,7 +1,9 @@
 from datetime import datetime
 from typing import Any, Optional
 
-from pydantic import BaseModel, EmailStr, ConfigDict
+from pydantic import BaseModel, EmailStr, ConfigDict, computed_field
+
+from app.ml.selection import SELECTION_METRICS, select_best_model_version
 
 
 class UserCreate(BaseModel):
@@ -78,12 +80,26 @@ class ExperimentOut(BaseModel):
     completed_at: Optional[datetime] = None
     model_versions: list[ModelVersionOut] = []
 
+    @computed_field
+    @property
+    def selection_metric(self) -> Optional[str]:
+        entry = SELECTION_METRICS.get(self.task_type)
+        return entry[0] if entry else None
+
+    @computed_field
+    @property
+    def best_model_version_id(self) -> Optional[str]:
+        best = select_best_model_version(self.model_versions, self.task_type)
+        return best.id if best else None
+
 
 class ExplanationOut(BaseModel):
     algorithm: str
     feature_names: list[str]
     feature_importance: list[float]
     sample_explanation: Optional[dict[str, float]] = None
+    # Classification only: the class whose SHAP values `sample_explanation` shows.
+    explained_class: Optional[str] = None
 
 
 class DriftCheckRequest(BaseModel):

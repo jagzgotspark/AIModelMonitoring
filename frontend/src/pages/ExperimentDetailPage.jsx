@@ -63,6 +63,8 @@ export default function ExperimentDetailPage() {
 
   if (!experiment) return <Skeleton height={220} />;
 
+  const bestModel = experiment.model_versions.find((mv) => mv.id === experiment.best_model_version_id);
+
   return (
     <div>
       <div className="page-header">
@@ -105,6 +107,13 @@ export default function ExperimentDetailPage() {
 
       <div className="card">
         <h3 className="card-title">Model versions</h3>
+        {bestModel && (
+          <p className="muted" style={{ marginTop: 0 }}>
+            Recommended: <strong>{bestModel.algorithm}</strong> —{" "}
+            {experiment.selection_metric === "rmse" ? "lowest" : "highest"} {experiment.selection_metric} on the
+            held-out test set.
+          </p>
+        )}
         <div className="table-wrap" style={{ border: "none" }}>
           <table className="data-table">
             <thead>
@@ -118,7 +127,10 @@ export default function ExperimentDetailPage() {
             <tbody>
               {experiment.model_versions.map((mv) => (
                 <tr key={mv.id}>
-                  <td style={{ fontWeight: 600 }}>{mv.algorithm}</td>
+                  <td style={{ fontWeight: 600 }}>
+                    {mv.algorithm}{" "}
+                    {mv.id === experiment.best_model_version_id && <span className="badge badge-ok">Best</span>}
+                  </td>
                   <td>
                     <div className="metric-chip-row">
                       {mv.metrics &&

@@ -12,6 +12,7 @@ from sklearn.metrics import (
 )
 from sklearn.model_selection import RandomizedSearchCV, train_test_split
 from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import LabelEncoder
 from xgboost import XGBClassifier, XGBRegressor
 
 from app.ml.preprocessing import build_preprocessor
@@ -41,11 +42,14 @@ ALGORITHM_REGISTRY = {
 def _base_model(algorithm: str, task_type: str):
     entry = ALGORITHM_REGISTRY[algorithm]
     model_cls = entry[task_type]
-    if algorithm == "xgboost":
-        if task_type == "classification":
-            return model_cls(eval_metric="logloss")
-        return model_cls()
     return model_cls(random_state=42)
+
+
+def _tuning_scoring(task_type: str, n_classes: int) -> str:
+    # Tune on the same metric used to pick the best model version (see app.ml.selection).
+    if task_type == "classification":
+        return "f1" if n_classes == 2 else "f1_macro"
+    return "neg_root_mean_squared_error"
 
 
 def train_model(
@@ -55,15 +59,25 @@ def train_model(
     task_type: str,
     tune_hyperparameters: bool = False,
 ) -> dict:
+    # Rows without a label can't be used for training or evaluation.
+    df = df.dropna(subset=[target_column])
     feature_columns = [c for c in df.columns if c != target_column]
     X = df[feature_columns]
     y = df[target_column]
 
-    if task_type == "classification" and y.dtype == object:
-        y = y.astype("category").cat.codes
+    stratify = None
+    label_classes = None
+    if task_type == "classification":
+        # XGBoost requires labels 0..k-1, so encode every classification target
+        # (e.g. {1, 2} or {"no", "yes"}), not just string ones.
+        encoder = LabelEncoder()
+        y = pd.Series(encoder.fit_transform(y.astype(str)), index=y.index)
+        label_classes = [str(c) for c in encoder.classes_]
+        if y.value_counts().min() >= 2:
+            stratify = y
 
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42
+        X, y, test_size=0.2, random_state=42, stratify=stratify
     )
 
     preprocessor = build_preprocessor(df, feature_columns)
@@ -74,13 +88,22 @@ def train_model(
     if tune_hyperparameters:
         param_grid = ALGORITHM_REGISTRY[algorithm]["param_grid"]
         search = RandomizedSearchCV(
-            pipeline, param_grid, n_iter=8, cv=3, random_state=42, n_jobs=-1
+            pipeline,
+            param_grid,
+            n_iter=8,
+            cv=3,
+            scoring=_tuning_scoring(task_type, n_classes=y.nunique()),
+            random_state=42,
+            n_jobs=-1,
         )
         search.fit(X_train, y_train)
         pipeline = search.best_estimator_
         best_params = search.best_params_
     else:
         pipeline.fit(X_train, y_train)
+
+    # Persisted with the artifact so encoded predictions can be mapped back to the original labels.
+    pipeline.label_classes_ = label_classes
 
     y_pred = pipeline.predict(X_test)
 
@@ -108,7 +131,11 @@ def train_model(
     feature_names = _output_feature_names(pipeline.named_steps["preprocess"], feature_columns)
     feature_importance = _extract_feature_importance(pipeline.named_steps["model"], feature_names)
 
-    hyperparameters = best_params or {k: v for k, v in model.get_params().items() if not callable(v)}
+    # Report the full parameter set of the model that was actually fitted (includes tuned values).
+    fitted_model = pipeline.named_steps["model"]
+    hyperparameters = {k: v for k, v in fitted_model.get_params().items() if not callable(v)}
+    if best_params:
+        hyperparameters["tuned_params"] = best_params
 
     return {
         "pipeline": pipeline,
@@ -153,3 +180,11 @@ def save_pipeline(pipeline, path: str) -> None:
 
 def load_pipeline(path: str):
     return joblib.load(path)
+
+
+def decode_labels(pipeline, codes) -> list:
+    """Map encoded class predictions (0..k-1) back to the original target labels."""
+    classes = getattr(pipeline, "label_classes_", None)
+    if not classes:
+        return [c.item() if isinstance(c, np.generic) else c for c in codes]
+    return [classes[int(c)] for c in codes]
