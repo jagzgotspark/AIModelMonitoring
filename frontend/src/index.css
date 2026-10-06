@@ -861,3 +861,135 @@ a.stat-card:hover {
   color: var(--text-muted);
   margin-top: 2px;
 }
+
+/* ---------- Drift details ---------- */
+
+.badge-warning {
+  background: var(--warning-soft);
+  color: var(--warning);
+}
+
+.card-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.card-header-row .card-title {
+  margin: 0;
+}
+
+.inline-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.inline-control select {
+  max-width: 340px;
+}
+
+.chart-note {
+  font-size: 13px;
+  margin: 6px 0 12px;
+}
+
+.chart-tooltip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 10px 12px;
+  font-size: 13px;
+  display: grid;
+  gap: 4px;
+  max-width: 320px;
+}
+
+.chart-tooltip-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.drift-verdict {
+  margin-top: 12px;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  border-left: 3px solid;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.drift-verdict.is-drifted {
+  background: var(--danger-soft);
+  border-left-color: var(--danger);
+}
+
+.drift-verdict.is-stable {
+  background: var(--success-soft);
+  border-left-color: var(--success);
+}
+
+.section-subtitle {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  margin: 24px 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-row {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.clickable-row {
+  cursor: pointer;
+}
+
+.data-table tr.is-selected td {
+  background: var(--primary-soft);
+}
+
+.change-list {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 13px;
+}
+
+.change-list li + li {
+  margin-top: 2px;
+}
+
+.feature-comparison {
+  margin-top: 8px;
+}
+
+.compact-table td,
+.compact-table th {
+  padding: 8px 12px;
+  font-size: 13px;
+}
