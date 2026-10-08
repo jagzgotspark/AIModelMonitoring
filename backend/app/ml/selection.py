@@ -1,5 +1,3 @@
-# Metric used to rank model versions within an experiment: (metric name, higher is better).
-# F1 is preferred over accuracy for classification because it isn't inflated by class imbalance.
 SELECTION_METRICS = {
     "classification": ("f1", True),
     "regression": ("rmse", False),

@@ -153,6 +153,7 @@ export default function DriftDashboardPage() {
   async function handleCheckDrift(e) {
     e.preventDefault();
     if (!file || !selectedModelId) return;
+    const form = e.currentTarget;
     setChecking(true);
     try {
       const text = await file.text();
@@ -164,6 +165,9 @@ export default function DriftDashboardPage() {
       );
       await loadReports(selectedModelId);
       setSelectedReportId(data.id);
+      // Clear the file input too, otherwise it keeps showing the old file name and
+      // re-choosing that same file doesn't fire onChange.
+      form.reset();
       setFile(null);
     } catch (err) {
       showToast(err.response?.data?.detail || "Drift check failed", "error");
@@ -277,7 +281,7 @@ export default function DriftDashboardPage() {
             <ResponsiveContainer width="100%" height={280}>
               <LineChart
                 data={chartData}
-                margin={{ top: 10, right: 24, left: 0, bottom: 10 }}
+                margin={{ top: 10, right: 52, left: 0, bottom: 10 }}
                 onClick={(state) => state?.activePayload && setSelectedReportId(state.activePayload[0].payload.id)}
                 style={{ cursor: "pointer" }}
               >
@@ -303,6 +307,7 @@ export default function DriftDashboardPage() {
                   isAnimationActive={false}
                   dot={({ key, ...props }) => <CheckDot key={key} {...props} selectedId={selectedReport?.id} />}
                   activeDot={{ r: 6 }}
+                  label={<LatestValueLabel lastIndex={chartData.length - 1} />}
                 />
                 {activeCompare && (
                   <Line
@@ -315,6 +320,7 @@ export default function DriftDashboardPage() {
                     isAnimationActive={false}
                     connectNulls
                     dot={{ r: 4, fill: REFERENCE_COLOR, stroke: "var(--surface)", strokeWidth: 2 }}
+                    label={<LatestValueLabel lastIndex={chartData.length - 1} />}
                   />
                 )}
               </LineChart>
@@ -382,6 +388,16 @@ function CheckDot({ cx, cy, payload, index, selectedId }) {
         strokeWidth={2}
       />
     </g>
+  );
+}
+
+// Labels only the newest point of a series so the current value is readable without hovering.
+function LatestValueLabel({ x, y, index, value, lastIndex }) {
+  if (index !== lastIndex || value == null) return null;
+  return (
+    <text x={x + 10} y={y - 10} fill="var(--text)" fontSize={12} fontWeight={600}>
+      {value.toFixed(2)}
+    </text>
   );
 }
 
