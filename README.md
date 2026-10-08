@@ -33,6 +33,9 @@ docker-compose up --build
    platform runs PSI + KS-test per feature against the training distribution and flags an
    alert when retraining is recommended.
 
+Sample training data and drift batches, with a step-by-step demo script, are in
+[`sample_data/`](sample_data/README.md).
+
 ## Project layout
 
 ```

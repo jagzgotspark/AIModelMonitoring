@@ -1,0 +1,401 @@
+area_sqft,bedrooms,bathrooms,house_age_years,distance_to_city_km,location,condition,has_parking
+1971,3,3,14,10.5,Suburb,Good,Yes
+1518,2,2,8,40.2,New Township,Fair,Yes
+1612,3,3,0,28.7,Outskirts,Good,Yes
+1281,2,1,1,30.1,Outskirts,Good,Yes
+3073,5,4,37,2.9,City Centre,Excellent,Yes
+1115,2,2,2,34.6,New Township,Good,No
+1840,3,2,24,10.3,Suburb,Fair,No
+1460,3,3,4,37.3,New Township,Good,Yes
+1438,3,3,3,30.0,New Township,Good,Yes
+2151,3,2,3,1.2,City Centre,Good,Yes
+1223,2,2,0,24.4,Outskirts,Fair,Yes
+2240,4,4,17,7.5,Suburb,Poor,Yes
+1646,3,3,5,13.2,Suburb,Fair,Yes
+1751,3,2,2,7.9,Suburb,Poor,Yes
+2508,5,4,3,30.2,New Township,Good,Yes
+1055,2,1,5,8.5,Suburb,Good,No
+1471,2,2,10,1.9,City Centre,Good,Yes
+2701,4,4,1,40.9,New Township,Good,No
+2143,4,4,22,1.0,City Centre,Good,Yes
+1297,2,2,57,8.8,Suburb,Poor,No
+2563,4,4,0,26.1,New Township,Good,Yes
+1690,2,2,15,40.1,New Township,Good,No
+1662,3,3,12,9.6,Suburb,Good,No
+2429,4,4,9,16.8,Outskirts,Fair,Yes
+1734,3,3,13,2.2,City Centre,Excellent,Yes
+1770,3,3,11,32.9,Outskirts,Fair,Yes
+1274,2,1,1,12.4,Suburb,Good,No
+1341,2,1,0,31.8,New Township,Good,No
+1416,2,1,0,36.0,New Township,Fair,Yes
+1236,2,2,1,12.9,Suburb,Good,No
+1791,3,3,7,5.1,Suburb,Fair,No
+2587,4,3,0,25.6,Outskirts,Fair,Yes
+2226,4,4,5,30.8,New Township,Fair,Yes
+1448,2,1,3,44.4,New Township,Fair,Yes
+1411,2,2,0,6.1,Suburb,Good,Yes
+1180,2,1,0,16.7,Outskirts,Good,Yes
+1907,3,2,0,33.2,New Township,Good,Yes
+1231,2,2,0,28.7,New Township,Excellent,Yes
+2047,3,2,0,32.8,Outskirts,Good,No
+2428,4,4,3,29.2,New Township,Good,Yes
+2030,4,3,6,1.9,City Centre,Fair,No
+1870,3,3,0,42.5,New Township,Excellent,Yes
+2589,4,4,0,42.2,New Township,Good,No
+2308,4,3,0,32.8,New Township,Good,Yes
+1112,2,1,0,2.6,City Centre,Good,Yes
+1460,2,2,0,5.7,Suburb,Good,Yes
+1274,2,2,0,33.7,Outskirts,Good,Yes
+1567,3,2,0,26.2,New Township,Excellent,No
+1640,3,3,10,7.0,Suburb,Fair,Yes
+1733,3,2,5,30.9,New Township,Good,No
+1360,2,1,0,13.9,Suburb,Excellent,Yes
+2406,4,4,0,35.9,New Township,Good,Yes
+1349,2,2,35,44.1,New Township,Good,Yes
+2500,4,3,0,39.3,New Township,Fair,Yes
+2325,4,4,3,28.2,New Township,Good,No
+2313,4,3,0,12.1,Suburb,Poor,Yes
+1860,3,3,0,12.4,Suburb,Good,No
+1745,3,2,0,33.3,New Township,Good,No
+1620,2,1,18,27.2,Outskirts,Fair,Yes
+1855,3,2,0,33.1,Outskirts,Poor,Yes
+1432,2,2,2,4.3,City Centre,Good,No
+1148,2,1,4,5.2,Suburb,Fair,Yes
+2171,4,3,13,13.8,Suburb,Good,No
+1137,2,1,10,38.2,New Township,Excellent,Yes
+1425,2,1,10,22.1,Outskirts,Good,Yes
+2332,4,3,11,11.5,Suburb,Fair,No
+1236,2,2,0,29.1,New Township,Excellent,No
+1320,2,2,7,44.0,New Township,Good,Yes
+1571,3,2,0,9.0,Suburb,Good,Yes
+1487,2,1,6,27.4,New Township,Poor,Yes
+1053,1,1,15,37.1,New Township,Good,Yes
+1589,3,3,8,30.1,New Township,Fair,Yes
+1535,2,2,4,34.2,New Township,Good,No
+1366,2,1,16,14.4,Suburb,Poor,No
+1458,2,1,17,32.1,Outskirts,Fair,Yes
+2088,4,3,0,32.1,New Township,Excellent,Yes
+1900,3,3,0,2.9,City Centre,Poor,No
+1908,3,3,0,7.3,Suburb,Good,Yes
+1756,3,2,14,9.7,Suburb,Good,Yes
+2371,4,4,0,0.9,City Centre,Good,No
+1813,3,3,5,36.2,New Township,Good,No
+911,1,1,11,41.6,New Township,Good,No
+1786,3,3,8,19.2,Outskirts,Poor,Yes
+2989,5,4,0,17.1,Outskirts,Fair,Yes
+1936,3,3,5,15.3,Outskirts,Excellent,Yes
+2656,5,4,6,40.3,New Township,Poor,No
+1527,2,1,0,32.1,New Township,Good,No
+1095,2,1,0,40.3,New Township,Excellent,Yes
+2247,4,4,5,27.9,New Township,Good,Yes
+1833,3,3,12,2.7,City Centre,Good,No
+1591,2,1,0,42.1,New Township,Fair,Yes
+1497,2,2,0,30.9,New Township,Good,Yes
+904,1,1,1,12.9,Suburb,Good,Yes
+2381,4,4,24,9.5,Suburb,Good,Yes
+2017,3,3,0,36.1,New Township,Good,Yes
+1394,3,2,0,33.5,New Township,Good,Yes
+1446,2,2,2,1.8,City Centre,Fair,Yes
+1351,3,2,2,26.4,New Township,Fair,No
+2293,4,4,0,34.3,New Township,Excellent,Yes
+2723,4,3,0,16.5,Outskirts,Excellent,Yes
+2176,3,3,1,9.2,Suburb,Good,Yes
+1480,2,2,6,37.2,New Township,Good,Yes
+1334,2,1,2,28.4,Outskirts,Good,Yes
+1347,2,1,14,2.2,City Centre,Good,Yes
+1014,2,2,4,33.8,New Township,Good,No
+1761,3,3,8,32.8,New Township,Good,No
+1348,2,2,16,34.5,Outskirts,Good,Yes
+1030,2,2,0,30.1,New Township,Excellent,No
+1388,2,1,0,1.4,City Centre,Good,No
+1559,3,2,16,41.7,New Township,Good,Yes
+2678,4,4,0,12.8,Suburb,Good,Yes
+2945,5,4,0,8.4,Suburb,Excellent,Yes
+703,1,1,0,7.1,Suburb,Good,No
+1811,3,2,0,33.4,Outskirts,Fair,Yes
+1874,3,2,0,27.9,Outskirts,Good,Yes
+2212,4,3,20,31.4,Outskirts,Good,No
+1768,3,3,6,3.9,City Centre,Fair,Yes
+2563,5,4,18,28.1,Outskirts,Excellent,No
+2266,4,4,1,32.1,New Township,Good,Yes
+1036,2,2,15,24.7,Outskirts,Fair,Yes
+1433,3,2,7,3.5,City Centre,Good,No
+1131,1,1,2,2.4,City Centre,Poor,Yes
+3080,5,4,0,27.5,New Township,Good,No
+1046,1,1,19,14.1,Suburb,Fair,Yes
+2710,5,4,0,33.1,New Township,Fair,No
+2225,4,4,12,2.4,City Centre,Good,Yes
+1633,3,3,11,41.2,New Township,Good,Yes
+1693,3,2,0,22.7,Outskirts,Excellent,Yes
+2407,4,4,1,26.2,New Township,Good,Yes
+1763,3,3,5,32.9,New Township,Fair,Yes
+2482,4,4,0,8.8,Suburb,Good,Yes
+2834,5,4,25,33.5,New Township,Good,No
+1023,2,1,17,40.0,New Township,Good,Yes
+1514,2,2,0,45.0,New Township,Good,No
+2584,4,4,4,4.4,City Centre,Fair,Yes
+1044,1,1,0,35.0,New Township,Fair,No
+1931,3,3,13,41.5,New Township,Good,No
+2798,5,4,16,13.5,Suburb,Excellent,Yes
+1083,2,1,3,14.1,Suburb,Good,Yes
+1080,2,1,4,12.7,Suburb,Poor,Yes
+506,1,1,2,37.8,New Township,Good,No
+1040,2,2,0,30.5,Outskirts,Fair,Yes
+1685,3,2,0,22.2,Outskirts,Excellent,No
+1349,2,2,8,8.0,Suburb,Fair,No
+1514,2,2,1,13.2,Suburb,Good,Yes
+2041,3,2,0,36.4,New Township,Good,Yes
+1897,3,2,2,2.4,City Centre,Fair,No
+1364,2,1,1,38.5,New Township,Good,Yes
+913,1,1,16,12.9,Suburb,Good,No
+1986,3,2,2,31.4,Outskirts,Good,Yes
+2504,5,4,13,2.5,City Centre,Good,Yes
+2071,4,3,1,26.7,New Township,Poor,No
+1472,2,2,5,9.1,Suburb,Good,Yes
+865,1,1,9,27.7,New Township,Poor,Yes
+1182,1,1,1,4.8,City Centre,Good,Yes
+1655,3,2,5,25.0,Outskirts,Good,Yes
+1944,3,2,0,41.2,New Township,Good,Yes
+2216,4,3,0,37.9,New Township,Good,Yes
+1932,3,3,25,28.4,New Township,Fair,No
+1954,3,3,0,30.9,New Township,Fair,No
+1229,2,2,10,23.8,Outskirts,Excellent,No
+1982,3,3,14,3.8,City Centre,Good,Yes
+1448,2,2,0,12.0,Suburb,Good,No
+2425,5,4,2,34.7,New Township,Fair,Yes
+1984,3,2,14,36.9,New Township,Fair,No
+1753,3,3,0,15.0,Suburb,Good,No
+1402,2,2,7,14.9,Suburb,Excellent,Yes
+1741,2,2,0,6.0,Suburb,Good,Yes
+995,1,1,17,34.6,Outskirts,Fair,Yes
+1977,4,4,0,25.8,New Township,Fair,Yes
+1459,2,1,9,8.6,Suburb,Good,Yes
+1163,2,1,12,21.1,Outskirts,Good,Yes
+2095,4,4,8,11.7,Suburb,Excellent,No
+1557,2,1,0,2.3,City Centre,Fair,No
+874,1,1,19,12.4,Suburb,Fair,Yes
+2091,4,4,13,44.2,New Township,Good,No
+1715,3,3,0,33.2,New Township,Good,Yes
+1507,2,2,2,42.4,New Township,Good,No
+1295,2,2,30,33.0,New Township,Excellent,Yes
+1786,3,3,25,7.9,Suburb,Fair,No
+1099,2,1,15,27.4,New Township,Excellent,Yes
+1301,2,1,0,3.6,City Centre,Good,Yes
+1151,2,1,12,3.0,City Centre,Excellent,Yes
+1590,3,2,0,1.0,City Centre,Excellent,Yes
+1851,3,2,0,32.7,New Township,Good,No
+1860,3,2,11,36.0,New Township,Good,Yes
+2990,5,4,11,26.4,Outskirts,Good,Yes
+3005,5,4,0,19.1,Outskirts,Fair,Yes
+1695,2,2,4,8.0,Suburb,Excellent,No
+1093,2,2,1,7.3,Suburb,Fair,Yes
+2367,4,3,7,29.4,Outskirts,Excellent,No
+2214,4,3,0,8.7,Suburb,Poor,Yes
+1975,3,2,13,1.5,City Centre,Fair,Yes
+1287,2,2,12,25.7,New Township,Poor,Yes
+1918,4,4,15,35.0,New Township,Poor,Yes
+1354,2,2,16,39.1,New Township,Fair,No
+1849,3,3,4,11.3,Suburb,Fair,Yes
+1611,2,2,9,7.2,Suburb,Fair,Yes
+1340,2,2,15,44.7,New Township,Good,Yes
+828,1,1,35,27.7,Outskirts,Good,No
+2014,3,2,2,2.6,City Centre,Good,No
+1460,3,3,0,14.3,Suburb,Fair,No
+1248,2,1,0,27.4,New Township,Fair,Yes
+1844,3,3,5,8.9,Suburb,Good,Yes
+1618,3,2,7,38.2,New Township,Excellent,Yes
+2481,4,4,5,8.6,Suburb,Fair,No
+1803,3,3,4,38.1,New Township,Poor,No
+2114,3,2,8,38.7,New Township,Excellent,Yes
+2799,5,4,0,4.9,City Centre,Good,No
+1755,3,2,0,22.0,Outskirts,Good,Yes
+568,1,1,11,28.5,Outskirts,Good,Yes
+2097,4,3,3,9.2,Suburb,Poor,Yes
+2102,3,3,0,34.3,New Township,Fair,Yes
+1374,2,1,24,25.5,New Township,Excellent,Yes
+2740,5,4,14,24.2,Outskirts,Fair,Yes
+1647,3,3,0,4.7,City Centre,Good,No
+2073,3,3,7,44.5,New Township,Fair,Yes
+2389,4,4,0,30.8,New Township,Good,No
+1562,2,2,0,3.1,City Centre,Good,No
+1784,3,2,0,7.2,Suburb,Good,Yes
+934,1,1,8,40.7,New Township,Fair,Yes
+1144,2,1,20,4.3,City Centre,Excellent,Yes
+2502,4,3,0,25.6,Outskirts,Excellent,No
+1351,2,2,15,39.5,New Township,Fair,Yes
+1959,3,3,10,5.9,Suburb,Fair,Yes
+2472,4,3,25,40.2,New Township,Good,Yes
+2005,3,2,1,28.1,New Township,Excellent,Yes
+2016,3,2,6,11.2,Suburb,Excellent,Yes
+2254,4,3,3,21.1,Outskirts,Excellent,No
+1682,3,3,9,6.7,Suburb,Good,Yes
+1973,3,3,21,26.7,New Township,Good,No
+2029,3,3,13,30.1,Outskirts,Fair,Yes
+1243,2,2,0,3.5,City Centre,Good,No
+1335,2,2,8,27.4,New Township,Excellent,No
+1342,2,1,9,9.8,Suburb,Good,Yes
+2295,4,3,20,12.7,Suburb,Good,Yes
+2035,3,2,0,32.7,New Township,Fair,Yes
+2504,4,3,0,38.5,New Township,Excellent,Yes
+1204,2,2,0,31.5,New Township,Good,Yes
+1573,2,1,0,27.8,New Township,Good,Yes
+2987,5,4,28,17.1,Outskirts,Good,Yes
+832,1,1,0,28.6,New Township,Fair,Yes
+1640,2,1,0,2.5,City Centre,Good,Yes
+2169,3,2,11,12.0,Suburb,Fair,Yes
+1731,3,3,11,35.8,New Township,Fair,No
+1871,3,2,34,28.0,Outskirts,Excellent,Yes
+2220,3,3,0,7.7,Suburb,Good,Yes
+1233,2,2,1,10.2,Suburb,Poor,Yes
+968,2,1,0,9.2,Suburb,Excellent,No
+1013,2,2,8,25.8,Outskirts,Fair,No
+1280,2,1,2,4.5,City Centre,Excellent,Yes
+895,1,1,7,10.3,Suburb,Fair,Yes
+1213,2,2,8,1.5,City Centre,Excellent,Yes
+1803,3,2,0,20.5,Outskirts,Fair,Yes
+1281,2,2,0,14.3,Suburb,Good,Yes
+1267,2,2,17,36.2,New Township,Good,No
+1834,3,3,4,5.2,Suburb,Excellent,Yes
+1665,2,2,4,40.0,New Township,Fair,Yes
+2193,4,3,7,22.7,Outskirts,Excellent,No
+1882,3,2,19,26.7,New Township,Fair,No
+942,1,1,3,37.9,New Township,Good,No
+2019,3,3,5,31.8,Outskirts,Good,Yes
+2194,4,4,15,26.5,New Township,Excellent,Yes
+1637,3,2,0,27.4,New Township,Fair,Yes
+1153,2,2,8,27.7,Outskirts,Good,No
+2609,4,3,0,22.7,Outskirts,Good,Yes
+1580,2,2,36,44.8,New Township,Fair,Yes
+1923,3,2,2,31.7,New Township,Excellent,No
+1378,2,1,11,6.1,Suburb,Excellent,Yes
+1844,4,4,0,17.1,Outskirts,Good,Yes
+1980,4,4,17,10.7,Suburb,Fair,Yes
+1639,2,2,7,29.7,New Township,Fair,Yes
+2235,4,4,5,13.3,Suburb,Good,Yes
+1850,3,2,0,36.4,New Township,Good,No
+1231,2,2,0,3.1,City Centre,Good,No
+671,1,1,5,0.5,City Centre,Good,Yes
+1965,3,2,20,31.3,Outskirts,Good,No
+1983,4,3,0,30.6,New Township,Good,No
+1882,3,3,11,38.7,New Township,Good,No
+2022,3,3,0,0.8,City Centre,Excellent,No
+750,1,1,0,36.0,New Township,Fair,No
+1154,2,2,0,11.4,Suburb,Poor,Yes
+1835,3,2,0,44.1,New Township,Good,No
+552,1,1,0,12.2,Suburb,Good,Yes
+1565,2,1,0,27.5,New Township,Poor,No
+455,1,1,26,11.2,Suburb,Good,Yes
+1442,2,1,18,27.3,Outskirts,Fair,No
+2401,4,4,5,1.4,City Centre,Good,No
+904,2,1,0,39.1,New Township,Fair,Yes
+1407,2,2,23,7.0,Suburb,Fair,Yes
+1878,3,2,1,13.9,Suburb,Good,Yes
+1605,2,2,0,43.5,New Township,Fair,Yes
+2547,5,4,0,38.1,New Township,Fair,Yes
+2383,4,4,2,39.4,New Township,Good,No
+2951,5,4,6,13.4,Suburb,Fair,Yes
+2041,4,4,5,5.0,Suburb,Good,No
+2985,5,4,12,5.7,Suburb,Excellent,Yes
+775,2,1,34,6.8,Suburb,Excellent,No
+2454,5,4,4,37.6,New Township,Poor,Yes
+2067,3,3,10,37.7,New Township,Good,Yes
+1762,3,3,5,5.4,Suburb,Good,Yes
+2036,4,3,0,32.4,New Township,Good,Yes
+1434,3,3,0,35.6,New Township,Fair,Yes
+2858,5,4,6,32.0,New Township,Good,Yes
+1798,3,3,0,13.0,Suburb,Fair,Yes
+2541,5,4,11,32.1,Outskirts,Excellent,No
+1913,4,4,31,4.8,City Centre,Good,Yes
+2283,4,3,3,8.1,Suburb,Good,Yes
+1591,2,1,4,32.9,Outskirts,Fair,No
+1997,4,4,5,2.2,City Centre,Fair,Yes
+1118,1,1,22,27.5,New Township,Fair,No
+1124,2,2,19,2.1,City Centre,Fair,Yes
+2119,4,3,25,22.9,Outskirts,Fair,Yes
+1174,2,1,0,18.4,Outskirts,Good,Yes
+1454,2,1,23,10.3,Suburb,Fair,Yes
+1022,2,2,1,16.5,Outskirts,Excellent,Yes
+2039,4,3,0,31.2,New Township,Good,Yes
+2127,4,3,14,4.9,City Centre,Good,Yes
+1564,3,2,6,31.0,New Township,Excellent,No
+2937,5,4,0,18.7,Outskirts,Good,No
+1246,2,2,0,27.6,New Township,Excellent,Yes
+728,1,1,5,43.2,New Township,Excellent,Yes
+1256,2,1,16,4.4,City Centre,Good,Yes
+1095,2,1,16,27.7,Outskirts,Excellent,Yes
+2181,4,4,13,13.0,Suburb,Good,Yes
+1927,3,3,21,39.9,New Township,Fair,Yes
+953,1,1,9,43.4,New Township,Excellent,No
+904,1,1,3,34.6,New Township,Good,Yes
+1129,2,1,0,4.1,City Centre,Excellent,Yes
+2340,4,4,0,1.4,City Centre,Poor,No
+1337,2,2,0,36.9,New Township,Excellent,No
+1863,3,3,0,32.9,Outskirts,Good,No
+1623,3,2,23,35.4,New Township,Poor,No
+1220,2,1,14,6.2,Suburb,Fair,Yes
+1858,3,2,9,28.3,Outskirts,Fair,Yes
+1020,2,1,0,1.0,City Centre,Good,Yes
+1919,3,3,2,33.8,Outskirts,Fair,Yes
+1145,1,1,0,12.1,Suburb,Excellent,Yes
+2661,4,3,0,37.6,New Township,Good,No
+1674,3,3,7,2.1,City Centre,Poor,No
+970,1,1,4,38.4,New Township,Good,Yes
+1363,2,1,10,14.0,Suburb,Poor,Yes
+2967,5,4,0,34.8,New Township,Good,No
+1579,3,3,0,32.7,Outskirts,Fair,No
+1710,3,3,1,22.4,Outskirts,Good,No
+1875,3,3,6,6.4,Suburb,Fair,No
+838,1,1,5,5.9,Suburb,Fair,No
+1671,3,2,8,42.6,New Township,Good,No
+1919,2,2,0,36.3,New Township,Good,Yes
+1295,2,2,11,4.7,City Centre,Excellent,No
+1866,3,2,0,13.8,Suburb,Fair,No
+2327,4,3,0,8.7,Suburb,Poor,Yes
+1577,2,2,0,28.9,New Township,Excellent,No
+1764,3,2,12,14.4,Suburb,Good,Yes
+1400,2,2,0,13.4,Suburb,Fair,Yes
+1194,2,1,26,26.7,New Township,Good,No
+1909,3,3,26,3.0,City Centre,Good,Yes
+2077,3,2,0,10.0,Suburb,Excellent,Yes
+1465,2,1,3,40.7,New Township,Poor,No
+1775,3,2,9,12.1,Suburb,Fair,Yes
+1569,2,1,0,9.4,Suburb,Good,Yes
+1116,2,1,0,42.8,New Township,Fair,Yes
+1866,3,2,1,39.3,New Township,Good,Yes
+1973,3,3,10,16.0,Outskirts,Fair,Yes
+1241,2,1,0,11.3,Suburb,Fair,Yes
+2311,3,2,0,34.3,New Township,Fair,Yes
+1700,3,3,4,16.8,Outskirts,Fair,Yes
+1897,3,3,19,2.5,City Centre,Fair,No
+1592,3,3,12,33.0,New Township,Excellent,Yes
+2822,5,4,3,32.0,New Township,Good,No
+2044,3,3,0,1.7,City Centre,Good,Yes
+2583,5,4,15,13.8,Suburb,Excellent,No
+1422,2,2,0,10.0,Suburb,Fair,No
+1647,3,3,23,13.8,Suburb,Good,Yes
+1638,3,2,15,41.8,New Township,Good,Yes
+2416,4,4,15,33.8,Outskirts,Fair,No
+1863,3,3,23,9.0,Suburb,Fair,Yes
+2198,4,3,3,30.3,New Township,Good,Yes
+1756,3,3,8,44.5,New Township,Fair,Yes
+1205,2,1,0,20.2,Outskirts,Excellent,No
+1563,3,3,0,44.0,New Township,Good,Yes
+1641,3,2,11,41.2,New Township,Good,Yes
+2103,3,3,1,44.0,New Township,Good,Yes
+2469,4,4,9,4.8,City Centre,Fair,Yes
+1837,3,2,0,10.0,Suburb,Fair,Yes
+2700,4,4,0,8.0,Suburb,Fair,Yes
+847,2,1,16,10.6,Suburb,Good,Yes
+1621,3,2,17,12.6,Suburb,Good,Yes
+1634,3,2,1,32.3,New Township,Good,Yes
+1287,2,1,9,2.1,City Centre,Good,Yes
+1242,2,2,2,3.7,City Centre,Good,Yes
+1645,3,3,0,1.2,City Centre,Excellent,No
+1083,2,1,0,30.4,New Township,Good,No
+1497,3,2,7,9.1,Suburb,Poor,Yes
+1406,2,1,2,14.3,Suburb,Good,Yes
+1161,2,2,5,25.9,New Township,Excellent,No
+1223,2,2,0,34.1,Outskirts,Fair,Yes
+2097,4,3,0,11.7,Suburb,Good,Yes
+1967,3,3,0,9.1,Suburb,Good,Yes
+2093,3,3,0,31.3,Outskirts,Good,Yes
